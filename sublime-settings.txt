@@ -1,0 +1,46 @@
+{
+	"caret_extra_width": 1,
+	"caret_style": "phase",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/Predawn/predawn.tmTheme",
+	"copy_with_empty_selection": false,
+	"drag_text": false,
+	"draw_minimap_border": true,
+	"font_face": "Consolas",
+	"font_options":
+	[
+		"no_round"
+	],
+	"font_size": 14,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"AngularJS",
+		"Less2Css",
+		"LiveReload",
+		"Makefile",
+		"Markdown",
+		"Minify",
+		"Vintage"
+	],
+	"open_files_in_new_window": false,
+	"origami_auto_close_empty_panes": true,
+	"origami_auto_zoom_on_focus": 0.55,
+	"overlay_scroll_bars": "enabled",
+	"predawn_tabs_active_underline": true,
+	"predawn_tabs_large": false,
+	"predawn_tabs_medium": false,
+	"predawn_tabs_small": true,
+	"preview_on_click": false,
+	"scroll_past_end": true,
+	"scroll_speed": 5.0,
+	"show_minimap": false,
+	"tab_size": 2,
+	"tabs_small": true,
+	"theme": "predawn-DEV.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"use-tab-stops": false,
+	"word_wrap": true
+}
