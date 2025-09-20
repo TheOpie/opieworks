@@ -1,97 +1,175 @@
-<!doctype html>
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>OpieWorks</title>
-	<link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
-	<meta http-equiv="pragma" content="no-cache" />
-	<meta name="robots" content="all" />
-	<meta name="MSSmartTagsPreventParsing" content="true" />
-	<meta http-equiv="imagetoolbar" content="false" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<style>
-		* { padding: 0; margin: 0; }
-		body { background-color: #333; }
-		h1{font-family: 'Medula One', cursive; margin-bottom: 0px;line-height: 130%;color: #fff;text-shadow: none;font-size: 93px;}
-		p { color: #fff; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 5px; -webkit-font-smoothing: antialiased; }
-		a { color: #fff; font-weight: bold; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.5); }
-		a:hover { color: rbga(255,255,255,0.95); border-bottom: 1px solid rgba(255,255,255,1); }
-		#logo { width: 100px; margin: 0; position: fixed; right: 50px; top:50px; }
-		#logo img {width:100%;}
-		#about { width: 370px;padding: 50px 0 10px 30px;margin: 0 auto 0 50px !important; background-color: rgba(0,0,0,0.35); }
-		#about h1 {
-      -webkit-border-radius: 30px;
-      border-radius: 30px;
-      /* text-align: center; */
-      }
-		/* #about p {padding:10px;margin-bottom: 15px;} */
-		#about p span {font-size: smaller;}
-		ul#connect{white-space:nowrap;width:250px;margin-top: 15px;}
-		#connect li{display:inline;list-style-type:none;width:14%;}
-		#connect a{text-decoration: none;padding:0.2%;border-style: none;}
-		#connect li a img{width:13%;}
-		#connect a:link,#navlist a:visited{text-decoration: none;opacity: 0.45;-webkit-transition:opacity 0.2s ease-in-out;-moz-transition:opacity 0.2s ease-in-out;-o-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;border-style: none;}
-		#connect a:hover{text-decoration: none;opacity:0.8;border-style: none;}
-		#connect img {border:none;}
+<!DOCTYPE html>
+<html lang="en">
 
-		@media (max-width: 767px) {
-			#logo { right: 45px; top:50px; }
-			#about { position: relative; width: 100%; padding: 20px; margin: 0 !important; background-color:transparent; }
-			/* #about p { background-color: rgba(0,0,0,0.05);} */
-			#about h1 { font-size: 70px}
-			background-image { opacity: 0.2; }
-		}
-	</style>
-  <link href="https://fonts.googleapis.com/css?family=Medula+One" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpieWorks | Creative Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <style>
+    #hero-3d {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #F97316, #F97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+  <!-- Hero Section -->
+  <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <!-- 3D Model Container -->
+    <div id="hero-3d"></div>
 
-<!-- swap out for a logo -->
-<div id="logo">
-	<a href="https://jamesvlindsay.com" title="check out some of my work"><img alt="logo" src="headSplotchv1.gif"></a>
-</div>
+    <!-- Content Overlay -->
+    <div class="hero-content container mx-auto px-6 text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-8 w-full flex justify-center" data-aos="fade-up">
+          <svg class="w-64 h-44 sm:w-80 sm:h-56 md:w-96 md:h-64 lg:w-[400px] lg:h-[275px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 275">
+            <g fill="#f57b19" stroke="null">
+              <path
+                d="M53.399 226.21c0-9.297-6.393-16.057-15.833-16.057-9.442 0-15.83 6.76-15.83 16.057s6.388 16.133 15.83 16.133c9.44 0 15.833-6.836 15.833-16.133zm-41.104 0c0-14.223 10.458-24.675 25.271-24.675s25.271 10.452 25.271 24.675c0 14.248-10.46 24.702-25.273 24.702s-25.271-10.454-25.271-24.702m86.353 5.805c0-6.308-4.288-10.805-10.605-10.805s-10.528 4.497-10.528 10.805c0 6.333 4.21 10.831 10.528 10.831 6.317 0 10.605-4.498 10.605-10.83zm-29.776.302c0-11.61 7.844-19.173 19.101-19.173 11.402 0 19.387 7.84 19.387 19.248 0 12.263-9.15 18.52-17.864 18.52-5.155 0-9.439-2.186-11.98-6.181v20.554H68.87v-32.968m45.39-18.22h8.643v35.86h-8.643v-35.86zm-1.376-10.402c0-3.342 2.397-5.805 5.737-5.805 3.341 0 5.737 2.463 5.737 5.805 0 3.343-2.396 5.755-5.737 5.755-3.34 0-5.737-2.412-5.737-5.755m46.259 24.475c-1.38-4.8-5.302-7.186-10.025-7.186-4.864 0-8.639 2.462-10.02 7.186h20.045zm-29.34 3.845c0-10.88 7.989-18.87 19.317-18.87s19.169 7.99 19.169 18.87v3.066H138.88c1.16 5.227 5.154 7.991 10.237 7.991 3.85 0 6.683-1.106 8.496-3.418h9.226c-2.69 6.81-9.226 11.259-17.722 11.259-11.326 0-19.315-7.991-19.315-18.898m44.375 1.031v-30.582h9.297v30.582c0 6.532 3.485 9.222 8.063 9.222 4.572 0 8.059-2.765 8.059-9.222v-30.582h9.295v30.582c0 6.457 3.486 9.222 8.062 9.222 4.572 0 8.059-2.69 8.059-9.222v-30.582h9.295v30.582c0 12.186-7.188 17.866-16.555 17.866-6.029 0-10.75-2.538-13.509-7.263-2.757 4.725-7.482 7.263-13.507 7.263-9.367 0-16.557-5.68-16.557-17.866m95.865-1.03c0-6.309-4.21-10.806-10.526-10.806-6.32 0-10.605 4.497-10.605 10.805 0 6.333 4.286 10.831 10.605 10.831 6.314 0 10.526-4.498 10.526-10.83zm-29.847 0c0-10.88 7.989-18.872 19.321-18.872 11.327 0 19.314 7.991 19.314 18.871 0 10.907-7.99 18.898-19.314 18.898-11.332 0-19.321-7.991-19.321-18.898m44.302-2.889c0-10.831 6.389-15.982 15.757-15.982 9.367 0 15.686 5.15 15.686 16.133v.2h-8.57v-.351c0-5.805-2.903-7.916-7.116-7.916-4.208 0-7.116 2.111-7.116 7.916v20.831H284.5v-20.831m37.327-30.733h8.643v31.385l14.235-15.68h11.038l-16.848 17.565 17.502 18.294h-11.255l-14.672-16.183v16.183h-8.643v-51.564m37.41 40.96h8.715c.072 2.411 2.175 3.995 6.389 3.995 4.43 0 6.321-1.81 6.321-3.996 0-2.763-3.2-3.115-7.047-3.618-5.518-.728-13.652-1.683-13.652-10.453 0-7.338 5.594-12.137 14.235-12.137 8.786 0 14.157 4.95 14.38 11.257h-8.572c-.218-2.186-2.252-3.694-5.665-3.694-3.773 0-5.663 1.81-5.663 3.92 0 2.739 3.27 3.191 7.116 3.694 4.793.654 13.579 1.608 13.579 10.53 0 7.261-5.882 12.061-15.032 12.061-9.148 0-14.889-4.875-15.104-11.56M82.458 34.857c-26.584 0-48.213 21.609-48.213 48.196 0 26.586 21.629 48.222 48.213 48.222 26.583 0 48.211-21.636 48.211-48.222s-21.628-48.196-48.21-48.196zm0 118.355c-38.688 0-70.165-31.462-70.165-70.16 0-38.672 31.477-70.159 70.165-70.159 38.69 0 70.164 31.487 70.164 70.16 0 38.697-31.474 70.16-70.166 70.16m236.753 0c-38.688 0-70.161-31.463-70.161-70.16v-70.16h21.95v70.16c0 26.586 21.629 48.222 48.211 48.222 26.587 0 48.212-21.636 48.212-48.222v-70.16h21.952v70.16c0 38.697-31.474 70.16-70.164 70.16" />
+              <path
+                d="M249.048 83.053c0 26.586-21.63 48.222-48.215 48.222-18.794 0-35.096-10.83-43.047-26.562a77.868 77.868 0 01-10.982 23.044c12.88 15.554 32.316 25.455 54.029 25.455 38.688 0 70.165-31.462 70.165-70.16h-21.95" />
+            </g>
+          </svg>
+        </div>
 
-<!-- swap out for information about yourself -->
-<div id="about">
-	<h1>OpieWorks LLC</h1>
-	<p>Web Development</p>
-	<p>UX Design</p>
-	<p>UI Design</p>
-	<p>Content Creation</p>
-	<p>Videography</p>
-	<p>Photography</p>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+          Digital solutions tailored to your needs
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-md mx-auto mb-8" data-aos="fade-up"
+          data-aos-delay="150">
+          <div class="bg-gray-800 bg-opacity-50 p-3 rounded-lg text-center">Web Development</div>
+          <div class="bg-gray-800 bg-opacity-50 p-3 rounded-lg text-center">Content<br class="sm:hidden"> Creation</div>
+          <div class="bg-gray-800 bg-opacity-50 p-3 rounded-lg text-center">UX Design</div>
+          <div class="bg-gray-800 bg-opacity-50 p-3 rounded-lg text-center">UI Design</div>
+          <div class="bg-gray-800 bg-opacity-50 p-3 rounded-lg text-center">Videography</div>
+          <div class="bg-gray-800 bg-opacity-50 p-3 rounded-lg text-center">Photography</div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+          <a href="https://www.linkedin.com/in/theopie" target="_blank"
+            class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+            <i data-feather="linkedin"></i> LinkedIn
+          </a>
+          <a href="mailto:james@opieworks.com"
+            class="bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+            <i data-feather="mail"></i> Email
+          </a>
+        </div>
+      </div>
+    </div>
 
+  </section>
 
-		<ul id="connect">
-			<!-- <li><a href="http://daily.theopie.com" title="My Tumblr" id="tumblr"><img src="tumblr.png" alt="tumblr"></a></li>
-			<li><a href="http://twitter.com/theopie" title="My Twitter" id="twitter"><img src="twitter.png" alt="twitter"></a></li>
-			<!-- <li><a href="http://flickr.com/photos/opie" title="My Flickr" id="flickr"><img src="flickr.png" alt="flickr"></a></li> -->
-			<li><a href="https://www.linkedin.com/in/theopie" title="My LinkedIn" id="linkedin"><img src="linkedin.png" alt="linkedin"></a></li>
-			<!-- <li><a href="http://www.last.fm/user/TheOpie/" title="My Last FM" id="lastfm"><img src="lastfm.png" alt="lastfm"></a></li>
-			<!-- <li><a href="http://www.facebook.com/profile.php?id=720027160" title="My Facebook" id="facebook"><img src="facebook.png" alt="facebook"></a></li> -->
-			<li><a href="mailto:james@opieworks.com"><img src="email.png" alt="email"></a></li>
-		</ul>
+  <script>
+    // Initialize 3D scene
+    function init3DScene() {
+      const container = document.getElementById('hero-3d');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
-	<!-- <p><span>Personal Page credit goes to <a href="http://nazhamid.com/">Naz Hamid</a> over at <a href="http://weightshift.com/">Weightshift</a>.</span></p> -->
-</div>
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
 
-<!--include jquery & backstretch-->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.backstretch.min.js"></script>
-<script type="text/javascript">
-$(function(){
-     $(window).resize(function(){
-         if($(this).width() >= 767){
-             $.backstretch("OpieWorks-bg.jpeg", {speed: 150});
-         }
-      })
-      .resize();//trigger resize on page load
-});
-</script>
+      // Add lights
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      scene.add(ambientLight);
 
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(1, 1, 1);
+      scene.add(directionalLight);
+
+      // Add a simple geometry (replace with your actual 3D model)
+      const geometry = new THREE.TorusKnotGeometry(1, 0.4, 100, 16);
+      const material = new THREE.MeshPhongMaterial({
+        color: 0xF97316,
+        emissive: 0xF97316,
+        emissiveIntensity: 0.5,
+        specular: 0xffffff,
+        shininess: 50,
+        wireframe: false
+      });
+      const knot = new THREE.Mesh(geometry, material);
+      scene.add(knot);
+
+      camera.position.z = 5;
+
+      // Add orbit controls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.5;
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        knot.rotation.x += 0.005;
+        knot.rotation.y += 0.01;
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    }
+
+    // Initialize Vanta.js background
+    function initVanta() {
+      VANTA.GLOBE({
+        el: "#hero-3d",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xF97316,
+        color2: 0xF97316,
+        backgroundColor: 0x111827,
+        size: 1.00
+      });
+    }
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Choose either 3D scene or Vanta.js (comment one out)
+      // init3DScene();
+      initVanta();
+      feather.replace();
+    });
+  </script>
 </body>
+
 </html>
